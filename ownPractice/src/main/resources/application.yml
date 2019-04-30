@@ -1,0 +1,33 @@
+# 默认的profile为dev，其他环境通过指定启动参数使用不同的profile，比如：  
+#   测试环境：java -jar test-service.jar --spring.profiles.active=test  
+#   生产环境：java -jar test-service.jar --spring.profiles.active=prod （启动jar包时可通过这两个命令修改运行环境）
+#指定端口
+server : 
+ port : 8082
+
+profiles : 
+  active : dev  #默认 dev（开发环境），（test测试环境，pro）
+
+spring : 
+  application :
+    name : test-service 
+  datasource : 
+    url : jdbc:mysql://127.0.0.1:3306/test?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username : root
+    password : 123456
+    type : com.alibaba.druid.pool.DruidDataSource
+    driver-class-name : com.mysql.jdbc.Driver
+
+#
+mybatis : 
+ mapper-locations : classpath:mapper/*Mapper.xml  #把xml文件放在com.XX.mapper.*中可能会出现找不到的问题，这里把他放在resource下的mapper中		
+ typeAliasesPackage : com.kk.ownPractice.entity  #这里是实体类的位置，#实体扫描，多个package用逗号或者分号分隔	
+
+ configuration :
+  map-underscore-to-camel-case : true	
+  cache-enable : false
+
+logging :
+ file :test-service.log
+
+

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.kk.ownPractice.mapper.UserDao">
+	<!--　Id表示statement的id唯一标识符,resultType表示结果集的类型,parameterType表示形式参数类型
+	　,如果SqlMapConfig.xml中配置了别名,就可以直接谢别名user,不用再写全路径com.baoyuan.domain.User -->
+   
+    <select id="findUserById" resultType="com.kk.ownPractice.entity.User" parameterType="int" >
+
+          select * from user where id = #{id}
+
+    </select>
+
+</mapper>
